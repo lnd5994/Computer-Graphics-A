@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Continually Rotate A Triangle (Button)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    
+  
+    <div id='Mouse'> </div>
+    <button type="button" onClick='clearDrag()'>Reset Location</button>
+    <button type="button" onClick='Reset_Speed()'>Reset Speed</button>
+    
+    <p>
+      <button type="button" onclick="Faster()">Faster</button>
+      <button type="button" onclick="Slower()">Slower</button>
+      <button type="button" onclick="Stop_Start()">Stop/Start</button>
+		<! these commands create a push-button withlabels Run and Stop.
+			When users click the button, call the function name held in 'onclick'>
+    </p>
+    
+    </p>
+	Instructions: Click and hold down the mouse to move the objects<br>
+    around the screen. Use the buttons to do the following: <br>
+    *Reset Location: change the objects back to their original location <br>
+    *Reset Speed: change the objects back to their original speed <br>
+    *Faster: speed up the objects' movement <br>
+    *Slower: slow down the objects' movement <br>
+    *Stop/Start: if the objects are moving, click to stop them; if the objects <br>
+    are stopped, click to resume movement (the space bar on your keyboard <br>
+    functions the same way) <br>
+    *The up arrow on your keyboard pauses the screen and allows you to <br>
+    increment the angle viewed with each push <br>
+    *The down arrow on your keyboard pauses the screen and allows you to <br>
+    decrement the angle viewed with each push <br>
+	<p>
+    
+    <script src="webgl-utils.js"></script>
+    <script src="webgl-debug.js"></script>
+    <script src="cuon-utils.js"></script>
+    <script src="cuon-matrix-mod.js"></script>
+    <script src="DeNautLauren_ProjA.js"></script>
+  </body>
+</html>
