@@ -5,8 +5,8 @@ var VSHADER_SOURCE =
 	'attribute vec4 a_Color;\n' + 
 	'varying vec4 v_Color;\n' + 
 	'void main() {\n' +
-	'  gl_Position = u_ModelMatrix * a_Position;\n' +
-	'  v_Color = a_Color;\n' + // Pass the data to the fragment shader
+	'gl_Position = u_ModelMatrix * a_Position;\n' +
+	'v_Color = a_Color;\n' + // Pass the data to the fragment shader
 	'}\n';
 
 var FSHADER_SOURCE =
@@ -15,7 +15,7 @@ var FSHADER_SOURCE =
 	'#endif GL_ES\n' +
 	'varying vec4 v_Color;\n' +
 	'void main() {\n' +
-	'  gl_FragColor = v_Color;\n' +
+	'gl_FragColor = v_Color;\n' +
 	'}\n';
 
 var ANGLE_STEP = 30.0;
