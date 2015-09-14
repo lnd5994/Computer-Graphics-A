@@ -1,33 +1,34 @@
 
 var VSHADER_SOURCE =
-'uniform mat4 u_ModelMatrix;\n' + 
-'attribute vec4 a_Position;\n' +
-'attribute vec4 a_Color;\n' + 
-'varying vec4 v_Color;\n' + 
-'void main() {\n' +
-'  gl_Position = u_ModelMatrix * a_Position;\n' +
-'  v_Color = a_Color;\n' + // Pass the data to the fragment shader
-'}\n';
+	'uniform mat4 u_ModelMatrix;\n' + 
+	'attribute vec4 a_Position;\n' +
+	'attribute vec4 a_Color;\n' + 
+	'varying vec4 v_Color;\n' + 
+	'void main() {\n' +
+	'  gl_Position = u_ModelMatrix * a_Position;\n' +
+	'  v_Color = a_Color;\n' + // Pass the data to the fragment shader
+	'}\n';
 
 var FSHADER_SOURCE =
-'#ifdef GL_ES\n' +
-'precision mediump float;\n' +
-'#endif GL_ES\n' +
-'varying vec4 v_Color;\n' +
-'void main() {\n' +
-'  gl_FragColor = v_Color;\n' +
-'}\n';
+	'#ifdef GL_ES\n' +
+	'precision mediump float;\n' +
+	'#endif GL_ES\n' +
+	'varying vec4 v_Color;\n' +
+	'void main() {\n' +
+	'  gl_FragColor = v_Color;\n' +
+	'}\n';
 
 var ANGLE_STEP = 30.0;
 var floatsPerVertex = 7;
- var currentAngle = 0.0;
+var currentAngle = 0.0;
 
 // Global vars for mouse click-and-drag for rotation.
-var isDrag=false;		// mouse-drag: true when user holds down mouse button
-var xMclik=0.0;			// last mouse button-down position (in CVV coords)
+var isDrag=false; // mouse-drag: true when user holds down mouse button
+var xMclik=0.0; // last mouse button-down position (in CVV coords)
 var yMclik=0.0;
-var xMdragTot=0.0;	// total (accumulated) mouse-drag amounts (in CVV coords).
+var xMdragTot=0.0; // total (accumulated) mouse-drag amounts (in CVV coords).
 var yMdragTot=0.0;
+
 
 function main() {
     // Retrieve <canvas> element
