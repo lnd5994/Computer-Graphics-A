@@ -1,4 +1,4 @@
-
+/*
 var VSHADER_SOURCE =
 	'uniform mat4 u_ModelMatrix;\n' + 
 	'attribute vec4 a_Position;\n' +
@@ -17,7 +17,76 @@ var FSHADER_SOURCE =
 	'void main() {\n' +
 	'gl_FragColor = v_Color;\n' +
 	'}\n';
+	
+var FSHADER_SOURCE =
+	'#ifdef GL_ES\n' +
+	'precision mediump float;\n' +
+	'#endif\n' +
+	'varying vec4 v_Color;\n' +
+	'void main() {\n' +
+	'gl_FragColor = v_Color;\n' +
+	'}\n';
 */	
+var VSHADER_SOURCE =
+	'uniform mat4 u_ModelMatrix;\n' + //!!!!!
+	'attribute vec4 a_Position;\n' +
+	'attribute vec4 a_Color;\n' + //!!!!!
+	'varying vec4 v_Color;\n' + //!!!!!
+	//'uniform mat4 u_ModelMatrix;\n' +
+	//'varying vec4 v_Color;\n' + //+++++++++
+	'void main() {\n' +
+	'gl_Position = u_ModelMatrix * a_Position;\n' +
+	//'  gl_Position = a_Position;\n' +
+	//'  v_Color = a_Color;\n' + //++++++++
+	//'  gl_PointSize = 10.0;\n' + //!!!!!
+	'v_Color = a_Color;\n' + // Pass the data to the fragment shader
+	'}\n';
+// Each instance computes all the on-screen attributes for just one VERTEX,
+// specifying that vertex so that it can be used as part of a drawing primitive
+// depicted in the CVV coord. system (+/-1, +/-1, +/-1) that fills our HTML5
+// 'canvas' object.  The program gets all its info for that vertex through the
+// 'attribute vec4' variable a_Position, which feeds it values for one vertex
+// taken from from the Vertex Buffer Object (VBO) we created inside the graphics
+// hardware by calling the 'initVertexBuffers()' function.
+//
+//    ?What other vertex attributes can you set within a Vertex Shader? Color?
+//    surface normal? texture coordinates?
+//    ?How could you set each of these attributes separately for each vertex in
+//    our VBO?  Could you store them in the VBO? Use them in the Vertex Shader?
+
+// Fragment shader program----------------------------------
+/*
+var FSHADER_SOURCE =
+'#ifdef GL_ES\n' +
+'precision mediump float;\n' +
+'#endif GL_ES\n' +
+'varying vec4 v_Color;\n' +
+'void main() {\n' +
+'  gl_FragColor = v_Color;\n' +
+
+'}\n';
+/*
+var VSHADER_SOURCE =
+  'attribute vec4 a_Position;\n' +
+  'attribute vec4 a_Color;\n' +
+  'uniform mat4 u_ViewMatrix;\n' +
+  'uniform mat4 u_ProjMatrix;\n' +
+  'varying vec4 v_Color;\n' +
+  'void main() {\n' +
+  '  gl_Position = u_ProjMatrix * u_ViewMatrix * a_Position;\n' +
+  '  v_Color = a_Color;\n' +
+  '}\n';
+
+// Fragment shader program
+var FSHADER_SOURCE =
+  '#ifdef GL_ES\n' +
+  'precision mediump float;\n' +
+  '#endif\n' +
+  'varying vec4 v_Color;\n' +
+  'void main() {\n' +
+  '  gl_FragColor = v_Color;\n' +
+  '}\n';
+*/
 var FSHADER_SOURCE =
 	'#ifdef GL_ES\n' +
 	'precision mediump float;\n' +
