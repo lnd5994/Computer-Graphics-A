@@ -1,4 +1,5 @@
 
+// Vertex shader program
 var VSHADER_SOURCE =
 	'uniform mat4 u_ModelMatrix;\n' + 
 	'attribute vec4 a_Position;\n' +
@@ -9,6 +10,7 @@ var VSHADER_SOURCE =
 	'v_Color = a_Color;\n' + // Pass the data to the fragment shader
 	'}\n';
 
+// Fragment shader program
 var FSHADER_SOURCE =
 	'#ifdef GL_ES\n' +
 	'precision mediump float;\n' +
